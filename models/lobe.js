@@ -10,3 +10,5 @@ const lobeSchema = new Schema(
     },
     { timestamps: true }
 );
+
+module.exports = lobeSchema;
