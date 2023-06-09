@@ -9,6 +9,7 @@ const articleSchema = new Schema(
         majorBrainRegionID: { type: Schema.Types.ObjectId, ref: "MajorBrainRegion", require: true },
         lobeID: { type: Schema.Types.ObjectId, ref: "Lobe", require: true },
         structureROIID: { type: Schema.Types.ObjectId, ref: "StructureROI", require: true },
+        approved: { type: Boolean, req: true },
     },
     { timestamps: true }
 );
