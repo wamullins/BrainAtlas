@@ -34,7 +34,7 @@ const createObject = async (req, res, collection) => {
     }
 };
 
-const updateObjectByID = async (req, res, collection) => {
+const updateObjectById = async (req, res, collection) => {
     try {
         const { id } = req.params;
         const updatedObject = await collection.findByIdAndUpdate(id, req.body, {
@@ -50,7 +50,7 @@ const updateObjectByID = async (req, res, collection) => {
     }
 };
 
-const deleteObjectByID = async (req, res, collection) => {
+const deleteObjectById = async (req, res, collection) => {
     try {
         const { id } = req.params;
         const deletedObject = await collection.findByIdAndDelete(id);
@@ -68,6 +68,6 @@ module.exports = {
     createObject,
     getAllObjectsInCollection,
     getObjectById,
-    updateObjectByID,
-    deleteObjectByID,
+    updateObjectById,
+    deleteObjectById,
 };

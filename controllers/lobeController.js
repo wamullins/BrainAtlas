@@ -15,18 +15,18 @@ const createLobe = async (req, res) => {
     redundantCRUD.createObject(req, res, Lobe);
 };
 
-const updateLobe = async (req, res) => {
-    redundantCRUD.updateObjectByID(req, res, Lobe);
+const updateLobeById = async (req, res) => {
+    redundantCRUD.updateObjectById(req, res, Lobe);
 };
 
-const deleteLobe = async (req, res) => {
-    redundantCRUD.deleteObjectByID(req, res, Lobe);
+const deleteLobeById = async (req, res) => {
+    redundantCRUD.deleteObjectById(req, res, Lobe);
 };
 
 module.exports = {
     getLobes,
     getLobeById,
     createLobe,
-    updateLobe,
-    deleteLobe,
+    updateLobeById,
+    deleteLobeById,
 };

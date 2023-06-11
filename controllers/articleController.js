@@ -17,18 +17,18 @@ const createArticle = async (req, res) => {
 //// admin functions ////
 
 /// going to use this function primairly as an admin to change the "aproved" field from the default false to true so that it appears on the page
-const updateArticle = async (req, res) => {
-    redundantCRUD.updateObjectByID(req, res, Article);
+const updateArticleById = async (req, res) => {
+    redundantCRUD.updateObjectById(req, res, Article);
 };
 
-const deleteArticle = async (req, res) => {
-    redundantCRUD.deleteObjectByID(req, res, Article);
+const deleteArticleById = async (req, res) => {
+    redundantCRUD.deleteObjectById(req, res, Article);
 };
 
 module.exports = {
     getArticles,
     getArticleById,
     createArticle,
-    updateArticle,
-    deleteArticle,
+    updateArticleById,
+    deleteArticleById,
 };

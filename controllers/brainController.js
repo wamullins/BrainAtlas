@@ -15,18 +15,18 @@ const createMajorBrainRegion = async (req, res) => {
     redundantCRUD.createObject(req, res, MajorBrainRegion);
 };
 
-const updateMajorBrainRegion = async (req, res) => {
-    redundantCRUD.updateObjectByID(req, res, MajorBrainRegion);
+const updateMajorBrainRegionById = async (req, res) => {
+    redundantCRUD.updateObjectById(req, res, MajorBrainRegion);
 };
 
-const deleteMajorBrainRegion = async (req, res) => {
-    redundantCRUD.deleteObjectByID(req, res, MajorBrainRegion);
+const deleteMajorBrainRegionById = async (req, res) => {
+    redundantCRUD.deleteObjectById(req, res, MajorBrainRegion);
 };
 
 module.exports = {
     getMajorBrainRegions,
     getMajorBrainRegionById,
     createMajorBrainRegion,
-    updateMajorBrainRegion,
-    deleteMajorBrainRegion,
+    updateMajorBrainRegionById,
+    deleteMajorBrainRegionById,
 };

@@ -15,18 +15,18 @@ const createStructureROI = async (req, res) => {
     redundantCRUD.createObject(req, res, StructureROI);
 };
 
-const updateStructureROI = async (req, res) => {
-    redundantCRUD.updateObjectByID(req, res, StructureROI);
+const updateStructureROIById = async (req, res) => {
+    redundantCRUD.updateObjectById(req, res, StructureROI);
 };
 
-const deleteStructureROI = async (req, res) => {
-    redundantCRUD.deleteObjectByID(req, res, StructureROI);
+const deleteStructureROIById = async (req, res) => {
+    redundantCRUD.deleteObjectById(req, res, StructureROI);
 };
 
 module.exports = {
     getStructureROIs,
     getStructureROIById,
     createStructureROI,
-    updateStructureROI,
-    deleteStructureROI,
+    updateStructureROIById,
+    deleteStructureROIById,
 };
