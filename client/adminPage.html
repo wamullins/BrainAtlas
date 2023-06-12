@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- meta bikes used a different url with additional flags: integrity=, crossorigin=, and referrerpolicy= -->
+    <link rel=stylesheet href="./style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="./scripts/adminPage.js"></script>
+    <title>Admin Portal</title>
+</head>
+<body>
+    <header>
+        <div id="backBtn">&lt Back</div>
+        <div id="homeBtn"><a href="index.html">Home</a></div>
+    </header>
+    <div id="adminLoginBox">
+        <div id="adminLoginText">Admin Login</div>
+        <input id="usernameBox" type="text" placeholder="USERNAME"/>
+        <input id="passwordBox" type="password" placeholder="PASSWORD"/>
+        <button id="loginButton"> Login </button>
+    </div>
+
+    <div id="adminArticleReview" class="hidden">article review here. Search by articles that are false in the approved field</div>
+
+</body>
+</html>

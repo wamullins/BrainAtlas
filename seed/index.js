@@ -318,7 +318,7 @@ const createArticles = async (majorBrainRegions, lobes, structureROIs) => {
             approved: true,
         }),
         new Article({
-            title: "Article bout the Hippocampus",
+            title: "Article about the Hippocampus",
             abstract: "abstract",
             url: "this is the url right here",
             citation: "love a good citation",

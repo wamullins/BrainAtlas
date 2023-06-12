@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <!-- meta bikes used a different url with additional flags: integrity=, crossorigin=, and referrerpolicy= -->
+    <link rel=stylesheet href="./style.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="./scripts/homePage.js"></script>
+    <title>Brain Atlas</title>
+</head>
+<body>
+    <header>
+        <div></div>
+        <div id="adminLoginBtn"><a href="adminPage.html">Admin Portal</a></div>
+    </header>
+    <h1>BRAIN ATLAS</h1>
+    <div id="atlasDiv">
+        <a href="./majorBrain.html"><img id="mainBrain" src="./imgs/mainBrain.png"/></a>
+        <img id="atlas" src="./imgs/stickAtlas.png"/>
+        <img class = "hidden" id="exploreMsg" src="./imgs/exploreMsgdraft.png"/>
+    </div>
+</body>
+</html>
