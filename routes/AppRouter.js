@@ -4,7 +4,7 @@ const Router = express.Router();
 const ArticleRouter = require("./articleRouter");
 const BrainRouter = require("./brainRouter");
 const LobeRouter = require("./lobeRouter");
-const StructureRouter = require("./structureROIRoute");
+const StructureRouter = require("./structureROIRouter");
 
 Router.use("/articles", ArticleRouter);
 Router.use("/brains", BrainRouter);
