@@ -6,9 +6,9 @@ const articleSchema = new Schema(
         abstract: { type: String, require: true },
         url: { type: String, require: true },
         citation: { type: String, require: true },
-        majorBrainRegionID: { type: Schema.Types.ObjectId, ref: "MajorBrainRegion", require: true },
-        lobeID: { type: Schema.Types.ObjectId, ref: "Lobe", require: true },
-        structureROIID: { type: Schema.Types.ObjectId, ref: "StructureROI", require: true },
+        majorBrainRegionId: { type: Schema.Types.ObjectId, ref: "MajorBrainRegion", require: true },
+        lobeId: { type: Schema.Types.ObjectId, ref: "Lobe", require: true },
+        structureROIId: { type: Schema.Types.ObjectId, ref: "StructureROI", require: true },
         approved: { type: Boolean, req: true },
     },
     { timestamps: true }
