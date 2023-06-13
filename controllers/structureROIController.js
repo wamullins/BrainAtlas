@@ -9,6 +9,14 @@ const getStructureROIById = async (req, res) => {
     redundantCRUD.getObjectById(req, res, StructureROI);
 };
 
+const getStructureROIByMajorBrainRegionId = async (req, res) => {
+    redundantCRUD.getObjectsByLocation(req, res, StructureROI, "majorBrainRegionId", ["lobeId"], false, false);
+};
+
+const getStructureROIByLobeId = async (req, res) => {
+    redundantCRUD.getObjectsByLocation(req, res, StructureROI, "lobeId", [], false, false);
+};
+
 //// admin functions ////
 
 const createStructureROI = async (req, res) => {
@@ -26,6 +34,8 @@ const deleteStructureROIById = async (req, res) => {
 module.exports = {
     getStructureROIs,
     getStructureROIById,
+    getStructureROIByMajorBrainRegionId,
+    getStructureROIByLobeId,
     createStructureROI,
     updateStructureROIById,
     deleteStructureROIById,

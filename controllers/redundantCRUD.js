@@ -23,6 +23,53 @@ const getObjectById = async (req, res, collection) => {
     }
 };
 
+// const getObjectsByKeyAndValue = async (req, res, collection, key) => {
+//     try {
+//         const { value } = req.query;
+//         const objects = await collection.find({ [key]: value });
+//         if (!objects) throw Error(`Objects with that ${key} were not found`);
+//         return res.json({ objects });
+//     } catch (e) {
+//         console.log(e);
+//         res.send(e.message);
+//     }
+// };
+
+///////// ISSUE ABOVE. how can i pass the key argument into req.query.key so that it looks for the releant key
+
+/// approval is only relevant for articles.
+const getObjectsByLocation = async (req, res, collection, where, excludedFields, approval) => {
+    try {
+        const { id } = req.params;
+        let objects;
+        if (approval && excludedFields) {
+            objects =
+                excludedFields.length === 1
+                    ? await collection.find({ [where]: id, [excludedFields[0]]: null, approved: true })
+                    : await collection.find({
+                          [where]: id,
+                          [excludedFields[0]]: null,
+                          [excludedFields[1]]: null,
+                          approved: true,
+                      });
+        } else if (excludedFields) {
+            objects =
+                excludedFields.length === 1
+                    ? await collection.find({ [where]: id, [excludedFields[0]]: null })
+                    : await collection.find({ [where]: id, [excludedFields[0]]: null, [excludedFields[1]]: null });
+        } else if (approval) {
+            objects = await collection.find({ [where]: id, approved: true });
+        } else {
+            objects = await collection.find({ [where]: id });
+        }
+        if (!objects) throw Error(`Objects with ${where}: ${here} were not found`);
+        return res.json({ objects });
+    } catch (e) {
+        console.log(e);
+        res.send(e.message);
+    }
+};
+
 const createObject = async (req, res, collection) => {
     try {
         const newObject = await new collection(req.body);
@@ -68,6 +115,7 @@ module.exports = {
     createObject,
     getAllObjectsInCollection,
     getObjectById,
+    getObjectsByLocation,
     updateObjectById,
     deleteObjectById,
 };
