@@ -9,7 +9,7 @@ const getArticles = async (req, res) => {
 const getArticleByMajorBrainRegionId = async (req, res) => {
     redundantCRUD.getObjectsByLocation(req, res, Article, "majorBrainRegionId", ["lobeId", "structureROIId"], true);
 };
-const getArticleByLobe = async (req, res) => {
+const getArticleByLobeId = async (req, res) => {
     redundantCRUD.getObjectsByLocation(req, res, Article, "lobeId", ["structureROIId"], true);
 };
 const getArticleByStructureROIId = async (req, res) => {
@@ -50,7 +50,7 @@ module.exports = {
     getArticles,
     getArticleById,
     getArticleByMajorBrainRegionId,
-    getArticleByLobe,
+    getArticleByLobeId,
     getArticleByStructureROIId,
     getUnapprovedArticles,
     createArticle,

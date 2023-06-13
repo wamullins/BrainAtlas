@@ -14,9 +14,79 @@ header {
     align-items: center;
 }
 
-#adminLoginBtn {
-    justify-self: flex-end;
+/* Information Page specific code */
+
+#majorBrainRegionTitle {
+    font-size: 8vmin;
 }
+
+#structureTitle {
+    font-size: 4vmin;
+}
+
+#navAndInfo {
+    margin: 1vmin;
+    display: flex;
+    justify-content: center;
+    gap: 3vmin;
+    width: 100vw;
+    
+}
+
+#navagationBrainBox {
+    height: 50vh;
+    width: 30vw;
+    min-width: 70vmin;
+    border: 2px solid black;
+}
+
+#navagationBrain {
+    position: relative;
+}
+
+#informationBox {
+    height: 50vh;
+    width: 30vw;
+    overflow-y: scroll;
+    font-weight: bold;
+}
+
+#informationBox > img {
+    height: 25vw;
+    width: 25vw;
+}
+
+#informationBox > span, #informationBox > a {
+    font-weight: 400;
+}
+
+#relatedArticlesBox {
+    width: 61vw;
+    height: 20vh;
+    display: grid;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    grid-template-columns: repeat(2, 30vw );
+    justify-items: center;
+    gap: 1vw;
+    overflow-y: scroll;
+}
+
+#relatedArticlesBox > div {
+    width: 28vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+#submitArticleBox {
+    display: flex;
+    gap: 2vmin;
+    align-items: center;
+}
+
 /* Homepage specific code  */
 
 #atlasDiv {
@@ -90,7 +160,8 @@ header {
 
 #exploreMsg.hidden,
 #adminLoginBox.hidden,
-#adminArticleReview.hidden{
+#adminArticleReview.hidden,
+#submitArticleBox.hidden{
     display: none;
 }
 

@@ -3,7 +3,7 @@ const controller = require("../controllers/articleController");
 
 Router.get("/", controller.getArticles);
 Router.get("/majorBrainRegion/:id", controller.getArticleByMajorBrainRegionId);
-Router.get("/lobe/:id", controller.getArticleByLobe);
+Router.get("/lobe/:id", controller.getArticleByLobeId);
 Router.get("/structureROI/:id", controller.getArticleByStructureROIId);
 Router.get("/unapproved", controller.getUnapprovedArticles);
 Router.get("/:id", controller.getArticleById);
