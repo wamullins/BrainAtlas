@@ -1,8 +1,8 @@
 const getAllObjectsInCollection = async (req, res, collection) => {
     try {
-        let functionObjects = await collection.find({});
+        const functionObjects = await collection.find({});
         console.log(`Showing all objects in collection`);
-        return res.json({ functionObjects });
+        return res.json(functionObjects);
     } catch (e) {
         console.log(e);
         return res.send(e.message);
@@ -63,7 +63,7 @@ const getObjectsByLocation = async (req, res, collection, where, excludedFields,
             objects = await collection.find({ [where]: id });
         }
         if (!objects) throw Error(`Objects with ${where}: ${here} were not found`);
-        return res.json({ objects });
+        return res.json(objects);
     } catch (e) {
         console.log(e);
         res.send(e.message);

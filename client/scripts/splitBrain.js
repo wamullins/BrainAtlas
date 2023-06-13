@@ -4,10 +4,12 @@ const structureTitle = document.getElementById("structureTitle");
 const navigationBrain = document.getElementById("navagationBrain"); //populated by the functions I'm going to make below
 const informationBox = document.getElementById("informationBox"); //populated with axios using functions in the class
 const relatedArticlesBox = document.getElementById("relatedArticlesBox");
-const initialsubmitArticleButton = document.getElementById("initialSubmitArticleButton");
+const initialSubmitArticleButton = document.getElementById("initialSubmitArticleButton");
 const submitArticleBox = document.getElementById("submitArticleBox");
 
 //// ESTABLISH ADDITIONAL VARIABLES ////
+
+const majorRegion = sessionStorage.getItem("majorBrainRegion");
 
 // taken from how kevin used constructors in the meta bikes assignment to unpack information from the database all at once into a single object
 class MajorBrainRegion {
@@ -61,7 +63,7 @@ class Article {
         this.approved = approved;
     }
     citationFill() {
-        return `<div>${this.citation}</div>`;
+        return `<div >${this.citation}</div>`;
     }
     informationBoxFill() {
         return `Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
@@ -70,10 +72,9 @@ class Article {
     }
 }
 
-const majorRegion = sessionStorage.getItem("majorBrainRegion");
 //// EVENT LISTENERS ////
 
-initialsubmitArticleButton.addEventListener("click", () => showArticleSubmission());
+initialSubmitArticleButton.addEventListener("click", () => showArticleSubmission());
 
 //// FUNCTIONS ////
 
@@ -82,7 +83,7 @@ const init = async (majorBrainRegion) => {
     console.log(majorBrainRegion);
     // get the three main brain regions
     const response = await axios.get("http://localhost:3001/api/brains/");
-    const allMBRObjects = response.data.functionObjects;
+    const allMBRObjects = response.data;
 
     // identify which brain region needs to be used here and set the main title
     const mbrObject = allMBRObjects.find((mbr) => mbr.name.toLowerCase() === majorBrainRegion);
@@ -106,6 +107,35 @@ const init = async (majorBrainRegion) => {
 const populateRelatedArticles = async (route, id) => {
     // route can be any of the get routes in the articleRtouer
     const response = await axios.get(`http://localhost:3001/api/articles/${route}/${id}`);
+    const allArticles = response.data;
+
+    console.log(allArticles);
+
+    //// might be able to do this with mapping instead
+    let relatedArticles;
+
+    for (i = 0; i < allArticles.length; i++) {
+        const { _id, title, abstract, url, citation, majorBrainRegionId, lobeId, structureROIId, approved } =
+            allArticles[i];
+        relatedArticles[i] = new Article(
+            _id,
+            title,
+            abstract,
+            url,
+            citation,
+            majorBrainRegionId,
+            lobeId,
+            structureROIId,
+            approved
+        );
+        relatedArticlesBox.innerHTML += relatedArticles[i].citationFill();
+        let articleBox = document.getElementById(_id);
+        articleBox.addEventListener("click", () => {
+            informationBox.innerHTML = relatedArticle.informationBoxFill();
+        });
+    }
+
+    // create the event listeners here for the articles so that when they are clicked they just immediatly use this data to populate the fields (no second database query needed)
 };
 
 const showArticleSubmission = () => {
