@@ -4,12 +4,9 @@ const structureTitle = document.getElementById("structureTitle");
 const navigationBrain = document.getElementById("navagationBrain"); //populated by the functions I'm going to make below
 const informationBox = document.getElementById("informationBox"); //populated with axios using functions in the class
 const relatedArticlesBox = document.getElementById("relatedArticlesBox");
-const initialSubmitArticleButton = document.getElementById("initialSubmitArticleButton");
 const submitArticleBox = document.getElementById("submitArticleBox");
 
-//// ESTABLISH ADDITIONAL VARIABLES ////
-
-const majorRegion = sessionStorage.getItem("majorBrainRegion");
+/// Classes ////
 
 // taken from how kevin used constructors in the meta bikes assignment to unpack information from the database all at once into a single object
 class MajorBrainRegion {
@@ -63,7 +60,7 @@ class Article {
         this.approved = approved;
     }
     citationFill() {
-        return `<div >${this.citation}</div>`;
+        return `<div id="${this._id}" class="articleBox">${this.citation}</div>`;
     }
     informationBoxFill() {
         return `Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
@@ -74,19 +71,61 @@ class Article {
 
 //// EVENT LISTENERS ////
 
-initialSubmitArticleButton.addEventListener("click", () => showArticleSubmission());
+//event listener for the article submission once it pops up.
 
 //// FUNCTIONS ////
 
-const init = async (majorBrainRegion) => {
+const init = async () => {
     // axios things to populate the other divs using functions from the classes above
-    console.log(majorBrainRegion);
+    const majorRegion = sessionStorage.getItem("majorBrainRegion");
+
+    console.log(majorRegion);
     // get the three main brain regions
     const response = await axios.get("http://localhost:3001/api/brains/");
     const allMBRObjects = response.data;
 
     // identify which brain region needs to be used here and set the main title
-    const mbrObject = allMBRObjects.find((mbr) => mbr.name.toLowerCase() === majorBrainRegion);
+    const mbrObject = allMBRObjects.find((mbr) => mbr.name.toLowerCase() === majorRegion);
+
+    pageSetup(mbrObject);
+
+    populateForMajorBrainRegion(mbrObject);
+};
+
+const pageSetup = async (mbrObject) => {
+    if (mbrObject.name === "Forebrain") {
+        // navigationBrain.innderHTML = ``;
+    } else if (mbrObject.name === "Midbrain") {
+        navigationBrain.innerHTML = `<div id="navHoverText"></div>
+            <img id="midbrainMainNav" name="Midbrain" class="navButton" src="imgs/midbrain_potato.png"/>
+            <img id="colliculiNav" name="Colliculi" class="navButton" src="imgs/midbrainPiece.png"/>
+            <img id="tectumNav" name="Tectum" class="navButton" src="imgs/midbrainPiece.png"/>
+            <img id="tegmentumNav" name="Tegmentum" class="navButton" src="imgs/midbrainPiece.png"/>
+            <img id="cerebrealPendunclesNav" name="Cerebral Penduncles" class="navButton" src="imgs/midbrainPiece.png"/>`;
+    } else if (mbrObject.name === "Hindbrain") {
+        navigationBrain.innerHTML = `<div id="navHoverText"></div>
+            <img id="hindbrainMainNav" name="Hindbrain" class="navButton" src="imgs/midbrain_potato.png"/>
+            <img id="ponsNav" name="Pons" class="navButton" src="imgs/midbrainPiece.png"/>
+            <img id="cerebellumNav" name="" class="navButton" src="imgs/midbrainPiece.png"/>
+            <img id="medullaOblongataNav" name="Medulla Oblongata" class="navButton" src="imgs/midbrainPiece.png"/>`;
+    }
+    // get all the structure objects connected to the mbr
+    const reponse = await axios.get(`http://localhost:3001/api/structures/majorBrainRegion/${mbrObject._id}`);
+    const structures = reponse.data;
+    console.log(structures);
+
+    // identify all navButtons on in the nav box
+    const navButtons = document.querySelectorAll(".navButton");
+    navButtons.forEach((btn) => {
+        if (btn.name !== mbrObject.name) {
+            btn.addEventListener("click", () => populateForStructureROI(btn.name, structures));
+        } else {
+            btn.addEventListener("click", () => populateForMajorBrainRegion(mbrObject));
+        }
+    });
+};
+
+const populateForMajorBrainRegion = async (mbrObject) => {
     majorBrainRegionTitle.innerHTML = `${mbrObject.name}`;
 
     // deconstruct the object and create a new majorBrainRegion instance and quickly fill in the page
@@ -96,12 +135,30 @@ const init = async (majorBrainRegion) => {
     informationBox.innerHTML = selectedMBR.informationBoxFill();
 
     populateRelatedArticles("majorBrainRegion", selectedMBR._id);
+};
 
-    if (majorBrainRegion === "forebrain") {
-        ///function to set up the navigationBrain
-    } else if (majorBrainRegion === "midbrain") {
-    } else if (majorBrainRegion === "hindbrain") {
-    }
+const populateForStructureROI = (strucName, structures) => {
+    console.log(strucName);
+
+    // identify which brain structure needs to be used here and set the structure title
+    const structure = structures.find((struc) => struc.name === strucName);
+    console.log(structure);
+
+    // // deconstruct the object and create a new majorBrainRegion instance and quickly fill in the page
+    const { _id, name, description, descriptionCitation, highlightImageFile, majorBrainRegion, lobeId } = structure;
+    const structureROI = new StructureROI(
+        _id,
+        name,
+        description,
+        descriptionCitation,
+        highlightImageFile,
+        majorBrainRegion,
+        lobeId
+    );
+    structureTitle.innerHTML = structureROI.structureTitleFill();
+    informationBox.innerHTML = structureROI.informationBoxFill();
+
+    populateRelatedArticles("structureROI", structureROI._id);
 };
 
 const populateRelatedArticles = async (route, id) => {
@@ -109,11 +166,17 @@ const populateRelatedArticles = async (route, id) => {
     const response = await axios.get(`http://localhost:3001/api/articles/${route}/${id}`);
     const allArticles = response.data;
 
-    console.log(allArticles);
+    relatedArticlesBox.innerHTML = `
+        <div id="initialSubmitArticleButton">
+            <img src="imgs/plusIcon.png" id="plusIcon" />
+            Submit an Article
+        </div>`;
 
-    allArticles.forEach((article) => {
+    let relatedArticles = new Array(allArticles.length);
+
+    allArticles.forEach((article, index) => {
         const { _id, title, abstract, url, citation, majorBrainRegionId, lobeId, structureROIId, approved } = article;
-        const relatedArticle = new Article(
+        relatedArticles[index] = new Article(
             _id,
             title,
             abstract,
@@ -124,18 +187,24 @@ const populateRelatedArticles = async (route, id) => {
             structureROIId,
             approved
         );
-        relatedArticlesBox.innerHTML += relatedArticle.citationFill();
-        // const articleBox = document.getElementById(_id);
-        // articleBox.addEventListener("click", () => {
-        //     informationBox.innerHTML = relatedArticle.informationBoxFill();
-        // });
+        relatedArticlesBox.innerHTML += relatedArticles[index].citationFill();
     });
 
-    // create the event listeners here for the articles so that when they are clicked they just immediatly use this data to populate the fields (no second database query needed)
+    // select all of the newly created boxes and add an event listener which goes back into the shownArticle array and calls the class functions
+    const shownArticles = document.querySelectorAll(".articleBox");
+    shownArticles.forEach((article) => {
+        article.addEventListener("click", () => {
+            informationBox.innerHTML = relatedArticles.find((art) => art._id === article.id).informationBoxFill();
+        });
+    });
+
+    // set function on click for the submit button. doing this earlier caused weird errors
+    const initialSubmitArticleButton = document.getElementById("initialSubmitArticleButton");
+    initialSubmitArticleButton.addEventListener("click", () => showArticleSubmission());
 };
 
 const showArticleSubmission = () => {
     submitArticleBox.classList = [];
 };
 
-init(majorRegion);
+init();
