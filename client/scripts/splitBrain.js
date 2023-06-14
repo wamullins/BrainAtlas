@@ -11,6 +11,12 @@ const abstractInput = document.getElementById("abstractInput");
 const urlInput = document.getElementById("urlInput");
 const citationInput = document.getElementById("citationInput");
 const articleSubmit = document.getElementById("articleSubmit");
+const thankYou = document.getElementById("thankYou");
+const closeSubmit = document.getElementById("closeSubmit");
+
+/// Constant to be fed into the article submission ///
+
+let currentInfoId = [undefined, undefined];
 
 /// Classes ////
 
@@ -77,7 +83,8 @@ class Article {
 
 //// EVENT LISTENERS ////
 
-//event listener for the article submission once it pops up.
+articleSubmit.addEventListener("click", () => createNewArticle());
+closeSubmit.addEventListener("click", () => closeSubmitWindow());
 
 //// FUNCTIONS ////
 
@@ -149,6 +156,8 @@ const pageSetup = async (mbrObject) => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const populateForMajorBrainRegion = async (mbrObject) => {
+    currentInfoId = ["majorBrainRegionId", mbrObject._id];
+
     majorBrainRegionTitle.innerHTML = `${mbrObject.name}`;
 
     // deconstruct the object and create a new majorBrainRegion instance and quickly fill in the page
@@ -167,7 +176,8 @@ const populateForStructureROI = (strucName, structures) => {
 
     // identify which brain structure needs to be used here and set the structure title
     const structure = structures.find((struc) => struc.name === strucName);
-    console.log(structure);
+    currentInfoId = ["structureROIId", structure._id];
+    console.log(currentInfoId);
 
     // // deconstruct the object and create a new majorBrainRegion instance and quickly fill in the page
     const { _id, name, description, descriptionCitation, highlightImageFile, majorBrainRegion, lobeId } = structure;
@@ -235,9 +245,51 @@ const populateRelatedArticles = async (route, id) => {
 const showArticleSubmission = () => {
     submitArticleBox.classList = [];
 };
+const closeSubmitWindow = () => {
+    submitArticleBox.setAttribute("class", "hidden");
+};
+
+const createNewArticle = async () => {
+    // checks the currentinfoId to see which brain region to attach the article to
+    let mbrId = currentInfoId[0] === "majorBrainRegionId" ? currentInfoId[1] : null;
+    let lId = currentInfoId[0] === "lobeId" ? currentInfoId[1] : null;
+    let strucId = currentInfoId[0] === "structureROIId" ? currentInfoId[1] : null;
+
+    if (
+        titleInput.value &&
+        abstractInput.value &&
+        urlInput.value &&
+        citationInput.value
+        // && typeof titleInput.value === "string" &&
+        // typeof abstractInput.value === "string" &&
+        // typeof urlInput.value === "string" &&
+        // typeof citationInput.value === "string" // for some reason this was working with numebrs so I'm not going to worry about it for now
+    ) {
+        await axios.post("http://localhost:3001/api/articles", {
+            title: titleInput.value,
+            abstract: abstractInput.value,
+            url: urlInput.value,
+            citation: citationInput.value,
+            majorBrainRegionId: mbrId,
+            lobeId: lId,
+            structureROIId: strucId,
+            approved: false,
+        });
+        console.log("posting submission");
+
+        articleSubmit.setAttribute("class", "hidden");
+        thankYou.classList = [];
+
+        setTimeout(() => {
+            submitArticleBox.setAttribute("class", "hidden");
+        }, 1500);
+    } else {
+        console.log("invalid article inputs. All fields must be strings.");
+    }
+};
 
 init();
 
-//// GOALS FOR jun 14 -> get the article submission finished, get the admin article review finished. Get admin ability to update and delete articles finished
+//// GOALS FOR jun 14 -> get the admin article review finished. Get admin ability to update and delete articles finished
 
-//// depending on how long the above takes -> begin working on styling (if the above takes a while) and scrap lobe functionality or complete the lobes if it doesn't take forever
+//// depending on how long the above takes -> begin working on styling (if the above takes a while) and scrap lobe functionality or complete the lobes if it doesn't take forever. lobe page will be almost identicle to the splt brain page though so maybe it's not worth cutting

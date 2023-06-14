@@ -81,10 +81,27 @@ header {
     background-color: lightgray;
 }
 
-#submitArticleBox {
+#initialSubmitArticleButton {
     display: flex;
     gap: 2vmin;
     align-items: center;
+}
+
+#submitArticleBox {
+    height: 60vh;
+    width: 50vw;
+    background-color: lightgray;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#thankYou {
+    align-self: center;
 }
 
 /* Homepage specific code  */
@@ -161,7 +178,9 @@ header {
 #exploreMsg.hidden,
 #adminLoginBox.hidden,
 #adminArticleReview.hidden,
-#submitArticleBox.hidden{
+#submitArticleBox.hidden,
+#articleSubmit.hidden,
+#thankYou.hidden {
     display: none;
 }
 
