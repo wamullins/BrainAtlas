@@ -92,9 +92,24 @@ const init = async () => {
     populateForMajorBrainRegion(mbrObject);
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const pageSetup = async (mbrObject) => {
     if (mbrObject.name === "Forebrain") {
-        // navigationBrain.innderHTML = ``;
+        /// unsure about the lobes and how I'll need to name id, and whatnot in order to properly format the css for it
+        navigationBrain.innerHTML = `<div id="navHoverText"></div>
+        <img id="forebrainMainNav" name="Forebrain" class="navButton" src="imgs/midbrain_potato.png"/>
+        <a id="frontalLobeLink" name="Frontal Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
+        <a id="parietalLobeLink" name="Parietal Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
+        <a id="temporalLobeLink" name="Temporal Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
+        <a id="occipitalLobeLink" name="Occipital Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
+        <img id="thalamusNav" name="Thalamus" class="navButton" src="imgs/midbrainPiece.png"/>
+        <img id="hypothalamusNav" name="Hypothalamus" class="navButton" src="imgs/midbrainPiece.png"/>
+        <img id="amygdalaNav" name="Amygdala" class="navButton" src="imgs/midbrainPiece.png"/>
+        <img id="hippocampusNav" name="Hippocampus" class="navButton" src="imgs/midbrainPiece.png"/>
+        <img id="pituitaryGlandNav" name="Pituitary Gland" class="navButton" src="imgs/midbrainPiece.png"/>
+        <img id="corpusCollosumNav" name="Corpus Collosum" class="navButton" src="imgs/midbrainPiece.png"/>
+        <img id="casalGangliaNav" name="Basal Ganglia" class="navButton" src="imgs/midbrainPiece.png"/>`;
     } else if (mbrObject.name === "Midbrain") {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
             <img id="midbrainMainNav" name="Midbrain" class="navButton" src="imgs/midbrain_potato.png"/>
@@ -106,7 +121,7 @@ const pageSetup = async (mbrObject) => {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
             <img id="hindbrainMainNav" name="Hindbrain" class="navButton" src="imgs/midbrain_potato.png"/>
             <img id="ponsNav" name="Pons" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="cerebellumNav" name="" class="navButton" src="imgs/midbrainPiece.png"/>
+            <img id="cerebellumNav" name="Cerebellum" class="navButton" src="imgs/midbrainPiece.png"/>
             <img id="medullaOblongataNav" name="Medulla Oblongata" class="navButton" src="imgs/midbrainPiece.png"/>`;
     }
     // get all the structure objects connected to the mbr
@@ -125,6 +140,8 @@ const pageSetup = async (mbrObject) => {
     });
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const populateForMajorBrainRegion = async (mbrObject) => {
     majorBrainRegionTitle.innerHTML = `${mbrObject.name}`;
 
@@ -136,6 +153,8 @@ const populateForMajorBrainRegion = async (mbrObject) => {
 
     populateRelatedArticles("majorBrainRegion", selectedMBR._id);
 };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const populateForStructureROI = (strucName, structures) => {
     console.log(strucName);
@@ -160,6 +179,8 @@ const populateForStructureROI = (strucName, structures) => {
 
     populateRelatedArticles("structureROI", structureROI._id);
 };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const populateRelatedArticles = async (route, id) => {
     // route can be any of the get routes in the articleRtouer
@@ -202,6 +223,8 @@ const populateRelatedArticles = async (route, id) => {
     const initialSubmitArticleButton = document.getElementById("initialSubmitArticleButton");
     initialSubmitArticleButton.addEventListener("click", () => showArticleSubmission());
 };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const showArticleSubmission = () => {
     submitArticleBox.classList = [];
