@@ -20,7 +20,7 @@ const getUnapprovedArticles = async (req, res) => {
     try {
         const unapproved = await Article.find({ approved: false });
         if (!unapproved) return res.send("there are no unapproved articles");
-        return res.json({ unapproved });
+        return res.json(unapproved);
     } catch (e) {
         console.log(e);
         res.send(e.message);

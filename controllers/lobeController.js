@@ -8,6 +8,9 @@ const getLobes = async (req, res) => {
 const getLobeById = async (req, res) => {
     redundantCRUD.getObjectById(req, res, Lobe);
 };
+const getLobeByName = async (req, res) => {
+    redundantCRUD.getObjectByName(req, res, Lobe);
+};
 
 //// admin functions ////
 
@@ -26,6 +29,7 @@ const deleteLobeById = async (req, res) => {
 module.exports = {
     getLobes,
     getLobeById,
+    getLobeByName,
     createLobe,
     updateLobeById,
     deleteLobeById,

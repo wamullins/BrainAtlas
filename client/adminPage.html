@@ -17,14 +17,30 @@
         <div></div>
         <div id="homeBtn"><a href="index.html">Home</a></div>
     </header>
-    <div id="adminLoginBox">
+    <div id="adminLoginBox" class="hidden">
         <div id="adminLoginText">Admin Login</div>
         <input id="usernameBox" type="text" placeholder="USERNAME"/>
         <input id="passwordBox" type="password" placeholder="PASSWORD"/>
         <button id="loginButton"> Login </button>
     </div>
-
-    <div id="adminArticleReview" class="hidden">article review here. Search by articles that are false in the approved field</div>
+    <div id="adminReviewArea">
+        <div id="adminPanel">
+            <div>Sort Articles By:</div>
+            <input type="radio" id="brains" name="articleSelector" value='majorBrainRegion'/>
+            <label for="adminMBRButton">Major Brain Region</label>
+            <input type="radio" id="lobes" name="articleSelector" value='lobe'/>
+            <label for="adminLobeButton">Lobe</label>
+            <input type="radio" id="structures" name="articleSelector" value='structureROI'/>
+            <label for="adminStructureButton">Structure</label>
+            <input type="radio" id="adminUnapprovedButton" name="articleSelector" value='unapproved'/>
+            <label for="adminUnapprovedButton">Unapproved</label>
+        </div>
+        <div id="regionPrompts"></div>
+        <div id="adminWorkArea">
+            <div id="adminInspector"></div>
+            <div id="adminObjectList"></div>
+        </div>
+    </div>
 
 </body>
 </html>

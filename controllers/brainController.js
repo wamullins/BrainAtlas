@@ -9,6 +9,10 @@ const getMajorBrainRegionById = async (req, res) => {
     redundantCRUD.getObjectById(req, res, MajorBrainRegion);
 };
 
+const getMajorBrainRegionByName = async (req, res) => {
+    redundantCRUD.getObjectByName(req, res, MajorBrainRegion);
+};
+
 //// admin functions ////
 
 const createMajorBrainRegion = async (req, res) => {
@@ -26,6 +30,7 @@ const deleteMajorBrainRegionById = async (req, res) => {
 module.exports = {
     getMajorBrainRegions,
     getMajorBrainRegionById,
+    getMajorBrainRegionByName,
     createMajorBrainRegion,
     updateMajorBrainRegionById,
     deleteMajorBrainRegionById,

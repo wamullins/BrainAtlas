@@ -9,6 +9,10 @@ const getStructureROIById = async (req, res) => {
     redundantCRUD.getObjectById(req, res, StructureROI);
 };
 
+const getStructureROIByName = async (req, res) => {
+    redundantCRUD.getObjectByName(req, res, StructureROI);
+};
+
 const getStructureROIByMajorBrainRegionId = async (req, res) => {
     redundantCRUD.getObjectsByLocation(req, res, StructureROI, "majorBrainRegionId", ["lobeId"], false, false);
 };
@@ -34,6 +38,7 @@ const deleteStructureROIById = async (req, res) => {
 module.exports = {
     getStructureROIs,
     getStructureROIById,
+    getStructureROIByName,
     getStructureROIByMajorBrainRegionId,
     getStructureROIByLobeId,
     createStructureROI,

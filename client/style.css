@@ -173,11 +173,53 @@ header {
     margin-top: .5vmin;
 }
 
+#adminReviewArea {
+    height: 90vh;
+    width: 90vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#adminPanel {
+    height: 5vmin;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+#regionPrompts {
+    height: 5vmin;
+    background-color: white;
+}
+
+#adminWorkArea {
+    height: 80vh;
+    width: 90vw;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#adminInspector {
+    height: 70vh;
+    width: 60vw;
+    border: 1px solid black;
+}
+
+#adminObjectList {
+    height: 70vh;
+    width: 25vw;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
 /* ////////////////////////// */
 
 #exploreMsg.hidden,
 #adminLoginBox.hidden,
-#adminArticleReview.hidden,
+#adminReviewArea.hidden,
 #submitArticleBox.hidden,
 #articleSubmit.hidden,
 #thankYou.hidden {

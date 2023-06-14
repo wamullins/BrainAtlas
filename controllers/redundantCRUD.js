@@ -16,7 +16,19 @@ const getObjectById = async (req, res, collection) => {
         const { id } = req.params;
         const object = await collection.findById(id);
         if (!object) throw Error(`Object ID Not Found`);
-        return res.json({ object });
+        return res.json(object);
+    } catch (e) {
+        console.log(e);
+        res.send(e.message);
+    }
+};
+
+const getObjectByName = async (req, res, collection) => {
+    try {
+        const { name } = req.params;
+        const object = await collection.find({ name: name });
+        if (!object) throw Error(`Object Name Not Found`);
+        return res.json(object);
     } catch (e) {
         console.log(e);
         res.send(e.message);
@@ -115,6 +127,7 @@ module.exports = {
     createObject,
     getAllObjectsInCollection,
     getObjectById,
+    getObjectByName,
     getObjectsByLocation,
     updateObjectById,
     deleteObjectById,
