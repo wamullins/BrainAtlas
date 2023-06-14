@@ -75,8 +75,9 @@ class Article {
         return `<div id="${this._id}" class="articleBox">${this.citation}</div>`;
     }
     informationBoxFill() {
-        return `Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
-        Citation: <span id="citationText>${this.citataion}</span><br><br>
+        return `Title: <span id="articleTitleText">${this.title}</span><br><br>
+        Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
+        Citation: <span id="citationText">${this.citataion}</span><br><br>
         Url: <a id="descriptionSource" href="${this.url}">${this.url}</a>`;
     }
 }
