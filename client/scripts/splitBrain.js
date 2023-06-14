@@ -42,6 +42,7 @@ class State {
 const render = (state) => {
     majorBrainRegionTitle.innerHTML = state.getMajorRegion();
     structureTitle.innerHTML = state.getMinorRegion();
+
     //// need to update this too
 };
 
