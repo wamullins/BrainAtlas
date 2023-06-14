@@ -111,13 +111,9 @@ const populateRelatedArticles = async (route, id) => {
 
     console.log(allArticles);
 
-    //// might be able to do this with mapping instead
-    let relatedArticles;
-
-    for (i = 0; i < allArticles.length; i++) {
-        const { _id, title, abstract, url, citation, majorBrainRegionId, lobeId, structureROIId, approved } =
-            allArticles[i];
-        relatedArticles[i] = new Article(
+    allArticles.forEach((article) => {
+        const { _id, title, abstract, url, citation, majorBrainRegionId, lobeId, structureROIId, approved } = article;
+        const relatedArticle = new Article(
             _id,
             title,
             abstract,
@@ -128,12 +124,12 @@ const populateRelatedArticles = async (route, id) => {
             structureROIId,
             approved
         );
-        relatedArticlesBox.innerHTML += relatedArticles[i].citationFill();
-        let articleBox = document.getElementById(_id);
-        articleBox.addEventListener("click", () => {
-            informationBox.innerHTML = relatedArticle.informationBoxFill();
-        });
-    }
+        relatedArticlesBox.innerHTML += relatedArticle.citationFill();
+        // const articleBox = document.getElementById(_id);
+        // articleBox.addEventListener("click", () => {
+        //     informationBox.innerHTML = relatedArticle.informationBoxFill();
+        // });
+    });
 
     // create the event listeners here for the articles so that when they are clicked they just immediatly use this data to populate the fields (no second database query needed)
 };
