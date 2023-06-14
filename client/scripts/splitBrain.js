@@ -4,7 +4,13 @@ const structureTitle = document.getElementById("structureTitle");
 const navigationBrain = document.getElementById("navagationBrain"); //populated by the functions I'm going to make below
 const informationBox = document.getElementById("informationBox"); //populated with axios using functions in the class
 const relatedArticlesBox = document.getElementById("relatedArticlesBox");
+// article submission things
 const submitArticleBox = document.getElementById("submitArticleBox");
+const titleInput = document.getElementById("titleInput");
+const abstractInput = document.getElementById("abstractInput");
+const urlInput = document.getElementById("urlInput");
+const citationInput = document.getElementById("citationInput");
+const articleSubmit = document.getElementById("articleSubmit");
 
 /// Classes ////
 
@@ -231,3 +237,7 @@ const showArticleSubmission = () => {
 };
 
 init();
+
+//// GOALS FOR jun 14 -> get the article submission finished, get the admin article review finished. Get admin ability to update and delete articles finished
+
+//// depending on how long the above takes -> begin working on styling (if the above takes a while) and scrap lobe functionality or complete the lobes if it doesn't take forever
