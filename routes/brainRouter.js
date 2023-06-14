@@ -6,7 +6,7 @@ Router.get("/:id", controller.getMajorBrainRegionById);
 Router.get("/name/:name", controller.getMajorBrainRegionByName);
 
 Router.post("/", controller.createMajorBrainRegion);
-Router.put("/", controller.updateMajorBrainRegionById);
-Router.delete("/", controller.deleteMajorBrainRegionById);
+Router.put("/:id", controller.updateMajorBrainRegionById);
+Router.delete("/:id", controller.deleteMajorBrainRegionById);
 
 module.exports = Router;

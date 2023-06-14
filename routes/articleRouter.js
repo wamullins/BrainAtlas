@@ -9,7 +9,7 @@ Router.get("/unapproved", controller.getUnapprovedArticles);
 Router.get("/:id", controller.getArticleById);
 
 Router.post("/", controller.createArticle);
-Router.put("/", controller.updateArticleById);
-Router.delete("/", controller.deleteArticleById);
+Router.put("/:id", controller.updateArticleById);
+Router.delete("/:id", controller.deleteArticleById);
 
 module.exports = Router;

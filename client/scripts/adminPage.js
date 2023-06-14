@@ -8,6 +8,7 @@ const radios = document.querySelectorAll('input[name="articleSelector"]');
 const regionPrompts = document.getElementById("regionPrompts");
 const adminInsepctor = document.getElementById("adminInspector");
 const adminObjectList = document.getElementById("adminObjectList");
+const adminControls = document.getElementById("adminControls");
 
 //// ESTABLISH ADDITIONAL VARIABLES ////
 
@@ -28,6 +29,7 @@ let adminAccounts = [
 
 let articleRoute;
 let regionRoute;
+let articleOnDeckId;
 
 //// Classes ////
 
@@ -96,15 +98,28 @@ const initialClick = () => {
 };
 
 const findButtonPress = async (articleRoute, regionRoute) => {
+    articleOnDeckId = "";
     if (articleRoute === "unapproved") {
         queryArticles(articleRoute, "");
+
+        adminControls.innerHTML = `<button id="adminApproval">Approve Article</button><button id="adminDelete">Delete Article</button>`;
+        // setup the update
+        const adminApproval = document.getElementById("adminApproval");
+        adminApproval.addEventListener("click", () => approveArticle());
     } else {
         const whichArea = document.getElementById("whichArea").value;
 
         const response = await axios.get(`http://localhost:3001/api/${regionRoute}/name/${whichArea}`);
         console.log(response.data[0]); /// cant figure out why the response is two things and therefore needs the 0
         queryArticles(articleRoute, response.data[0]._id);
+
+        adminControls.innerHTML = `<button id="adminDelete">Delete Article</button>`;
     }
+
+    // set up the detele button since this will be here for everythign so it goes outside the if statement
+
+    const adminDelete = document.getElementById("adminDelete");
+    adminDelete.addEventListener("click", () => deleteArticle());
 };
 
 const queryArticles = async (articleRoute, id) => {
@@ -113,7 +128,7 @@ const queryArticles = async (articleRoute, id) => {
     // this is pretty much the exact same as with the split brain populating
     let allArticles = response.data;
 
-    console.log(allArticles);
+    console.log(`show all articles ${allArticles}`);
 
     let relatedArticles = new Array(allArticles.length);
 
@@ -139,6 +154,32 @@ const queryArticles = async (articleRoute, id) => {
     shownArticles.forEach((article) => {
         article.addEventListener("click", () => {
             adminInsepctor.innerHTML = relatedArticles.find((art) => art._id === article.id).informationBoxFill();
+            articleOnDeckId = article.id;
+            console.log(articleOnDeckId);
         });
     });
+};
+
+const approveArticle = async () => {
+    if (articleOnDeckId) {
+        console.log(`approving ${articleOnDeckId}`);
+        await axios.put(`http://localhost:3001/api/articles/${articleOnDeckId}`, {
+            approved: true,
+        });
+        adminInsepctor.innerHTML = `Approved article. Id: ${articleOnDeckId}`;
+        findButtonPress(articleRoute, regionRoute);
+    } else {
+        console.log("no article selected for approval");
+    }
+};
+
+const deleteArticle = async () => {
+    if (articleOnDeckId) {
+        console.log(`deleting http://localhost:3001/api/articles/${articleOnDeckId}`);
+        await axios.delete(`http://localhost:3001/api/articles/${articleOnDeckId}`);
+        adminInsepctor.innerHTML = `Deleted article. Id: ${articleOnDeckId}`;
+        findButtonPress(articleRoute, regionRoute);
+    } else {
+        console.log("no article selected for deletion");
+    }
 };

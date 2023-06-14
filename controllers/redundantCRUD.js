@@ -100,7 +100,7 @@ const updateObjectById = async (req, res, collection) => {
             new: true,
         });
         if (updatedObject) {
-            return res.json({ updatedObject });
+            return res.json(updatedObject);
         }
         return res.send("Object ID Not Found");
     } catch (e) {
@@ -114,7 +114,7 @@ const deleteObjectById = async (req, res, collection) => {
         const { id } = req.params;
         const deletedObject = await collection.findByIdAndDelete(id);
         if (deletedObject) {
-            return res.json({ deletedObject });
+            return res.json(deletedObject);
         }
         return res.send("Object ID Not Found");
     } catch (e) {

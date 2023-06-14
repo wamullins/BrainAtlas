@@ -6,7 +6,7 @@ Router.get("/:id", controller.getLobeById);
 Router.get("/name/:name", controller.getLobeByName);
 
 Router.post("/", controller.createLobe);
-Router.put("/", controller.updateLobeById);
-Router.delete("/", controller.deleteLobeById);
+Router.put("/:id", controller.updateLobeById);
+Router.delete("/:id", controller.deleteLobeById);
 
 module.exports = Router;

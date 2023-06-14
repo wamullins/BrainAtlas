@@ -8,7 +8,7 @@ Router.get("/:id", controller.getStructureROIById);
 Router.get("/name/:name", controller.getStructureROIByName);
 
 Router.post("/", controller.createStructureROI);
-Router.put("/", controller.updateStructureROIById);
-Router.delete("/", controller.deleteStructureROIById);
+Router.put("/:id", controller.updateStructureROIById);
+Router.delete("/:id", controller.deleteStructureROIById);
 
 module.exports = Router;
