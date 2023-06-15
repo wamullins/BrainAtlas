@@ -12,12 +12,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 2.5vmin;
+}
+
+#homeAdminBtns {
+    display: flex;
+    width: 25vmin;
+    justify-content: space-around;
 }
 
 /* Information Page specific code */
 
-#majorBrainRegionTitle {
-    font-size: 8vmin;
+#majorBrainRegionTitle, #lobeTitle {
+    font-size: 6vmin;
 }
 
 #structureTitle {
@@ -30,18 +37,32 @@ header {
     justify-content: center;
     gap: 3vmin;
     width: 100vw;
-    
 }
 
 #navagationBrainBox {
-    height: 50vh;
-    width: 30vw;
-    min-width: 70vmin;
-    border: 2px solid black;
+    height: 60vmin;
+    width: 70vmin;
+    min-width: 600px;
+    border-right: 2px solid black;
+    border-left:2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#navHoverText {
+    align-self: flex-start;
+    margin: 2vmin;
+    height: 3vmin;
 }
 
 #navagationBrain {
     position: relative;
+    height: 60vmin;
+    width: 60vmin;
+    min-height: 500px;
+    min-width: 500px;
 }
 
 #navagationBrain>img:hover {
@@ -51,12 +72,172 @@ header {
     filter: brightness(80%);
 }
 
+#navagationBrain > img,#navagationBrain > a {
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+/* STRUCTURE SPECIFIC CODE... THIS IS GOING TO BE GROSS */
+
+/* forebrain */
+#forebrainMainNav {
+    top: 50%;
+    left: 50%;
+}
+#frontalLobeLink {
+    top: 44%;
+    left: 21%;
+}
+#parietalLobeLink {
+    top: 33%;
+    left: 67%;
+}
+#temporalLobeLink {
+    top: 67%;
+    left: 53%;
+}
+#occipitalLobeLink {
+    top: 45%;
+    left: 91%;
+}
+#hypothalamusNav {
+    top: 62.8%;
+    left: 35.3%;
+}
+#pituitaryGlandNav {
+    top: 68%;
+    left: 31%;
+}
+#corpusCollosumNav {
+    top: 47%;
+    left: 49%;
+}
+#basalGangliaNav {
+    top: 55%;
+    left: 49%;
+}
+#amygdalaNav {
+    top: 62.5%;
+    left: 48%;
+}
+#thalamusNav {
+    top: 53%;
+    left: 49.7%;
+}
+#hippocampusNav {
+    top: 54%;
+    left: 50%;
+}
+
+/* midbrain */
+
+#midbrainMainNav {
+    top: 50%;
+    left: 50%;
+}
+
+#colliculiNav {
+    top: 37%;
+    left: 55%;
+}
+#tectumNav {
+    top: 48%;
+    left: 54%;
+}
+#tegmentumNav {
+    top: 50%;
+    left: 35%;
+}
+
+/* hindbrain */
+
+#hindbrainMainNav {
+    top: 50%;
+    left: 50%;
+}
+
+#ponsNav {
+    top: 32%;
+    left: 40%;
+}
+#cerebellumNav {
+    top: 25%;
+    left: 70%;
+}
+#medullaOblongataNav {
+    top: 50%;
+    left: 48%;
+}
+
+/* frontal lobe */
+
+#frontalNav {
+    top: 50%;
+    left: 50%;
+}
+
+#prefrontalNav {
+    top: 58%;
+    left: 36%;
+}
+
+#broccaNav {
+    top: 58%;
+    left: 45%;
+}
+
+/* parietallobe */
+#parietalNav {
+    top: 50%;
+    left: 50%;
+}
+#somatNav {
+    top: 51%;
+    left: 22%;
+}
+#angularNav {
+    top: 70%;
+    left: 78%;
+}
+
+/* temporal lobe */
+#temporalNav {
+    top: 50%;
+    left: 50%;
+}
+#superiorTempNav {
+    top: 50%;
+    left: 50%;
+}
+
+#tempPoleNav {
+    top: 50%;
+    left: 50%;
+}
+
+/* occipital lobe */
+#occipitalNav {
+    top: 50%;
+    left: 50%;
+}
+#vOneNav {
+    top: 68%;
+    left: 64.5%;
+}
+
+#vTwoNav {
+    top: 65.5%;
+    left: 60.5%;
+}
+
+/* back to code relevant to the rest of the page */
 
 #informationBox {
-    height: 50vh;
+    height: 60vmin;
     width: 30vw;
     overflow-y: scroll;
     font-weight: bold;
+    border-right: 2px solid black;
 }
 
 #informationBox > img {
@@ -71,6 +252,7 @@ header {
 #relatedArticlesBox {
     width: 61vw;
     height: 20vh;
+    margin-top: 1vmin;
     display: grid;
     border-left: 1px solid black;
     border-right: 1px solid black;
@@ -158,14 +340,23 @@ header {
 
 #majorBrainRegionDiv {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 70vh;
 }
+
+#majorBrainRegionDiv > a {
+    transform: scale(.8)
+}
+
 #majorBrainRegionDiv > a:hover {
     filter: brightness(80%);
 }
 
+#majorBrainHoverText {
+    height: 10vmin;
+    font-size: 10vmin;
+}
 
 /* Admin portal specific code */
 #adminLoginBox {

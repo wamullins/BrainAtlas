@@ -2,6 +2,7 @@
 const lobeTitle = document.getElementById("lobeTitle"); //populated with axios
 const structureTitle = document.getElementById("structureTitle");
 const navigationBrain = document.getElementById("navagationBrain"); //populated by the functions I'm going to make below
+const navHoverText = document.getElementById("navHoverText");
 const informationBox = document.getElementById("informationBox"); //populated with axios using functions in the class
 const relatedArticlesBox = document.getElementById("relatedArticlesBox");
 // article submission things
@@ -112,33 +113,31 @@ const init = async () => {
 const pageSetup = async (lobeObject) => {
     if (lobeObject.name === "Frontal Lobe") {
         /// unsure about the lobes and how I'll need to name id, and whatnot in order to properly format the css for it
-        navigationBrain.innerHTML = `<div id="navHoverText"></div>
-        <img id="frontalLobenMainNav" name="Frontal Lobe" class="navButton" src="imgs/FrontalLobeBaseModel.png"/>
+        navigationBrain.innerHTML = `
+        <img id="frontalNav" name="Frontal Lobe" class="navButton" src="imgs/FrontalLobeBaseModel.png"/>
         <img id="prefrontalNav" name="Prefrontal cortex" class="navButton" src="imgs/PFCModel.png"/>
         <img id="broccaNav" name="Brocca's Area" class="navButton" src="imgs/BroccasModel.png"/>`;
     } else if (lobeObject.name === "Parietal Lobe") {
-        navigationBrain.innerHTML = `<div id="navHoverText"></div>
+        navigationBrain.innerHTML = `
             <img id="parietalNav" name="Parietal Lobe" class="navButton" src="imgs/ParietalLobeBaseModel.png"/>
             <img id="somatNav" name="Somatosensory cortex" class="navButton" src="imgs/SomatModel.png"/>
             <img id="angularNav" name="Angular Gyrus" class="navButton" src="imgs/AngularGyrusModel.png"/>`;
     } else if (lobeObject.name === "Temporal Lobe") {
-        navigationBrain.innerHTML = `<div id="navHoverText"></div>
+        navigationBrain.innerHTML = `
             <img id="temporalNav" name="Temporal Lobe" class="navButton" src="imgs/TemporalLobeBaseModel.png"/>
             <img id="superiorTempNav" name="Superior Temporal Gyrus" class="navButton" src="imgs/SuperiorGyrusModel.png"/>
             <img id="tempPoleNav" name="Temporal Pole" class="navButton" src="imgs/TemporalPoleModel.png"/>`;
     } else if (lobeObject.name === "Occipital Lobe") {
-        navigationBrain.innerHTML = `<div id="navHoverText"></div>
+        navigationBrain.innerHTML = `
             <img id="occipitalNav" name="Occipital Lobe" class="navButton" src="imgs/OccipitalLobeBaseModel.png"/>
-            <img id="vOneNav" name="Primary Visual Cortex" class="navButton" src="imgs/vOneModel.png"/>
-            <img id="vTwoNav" name="Secondary Visual Cortex" class="navButton" src="imgs/vTwoModel.png"/>`;
+            <img id="vTwoNav" name="Secondary Visual Cortex" class="navButton" src="imgs/vTwoModel.png"/>
+            <img id="vOneNav" name="Primary Visual Cortex" class="navButton" src="imgs/vOneModel.png"/>`;
     }
 
     console.log(`going for structures`);
     const reponse = await axios.get(`http://localhost:3001/api/structures/lobe/${lobeObject._id}`);
     const structures = reponse.data;
     console.log(`structures ${structures}`);
-
-    const navHoverText = document.getElementById("navHoverText");
 
     // identify all navButtons on in the nav box
     const navButtons = document.querySelectorAll(".navButton");
@@ -149,6 +148,7 @@ const pageSetup = async (lobeObject) => {
             btn.addEventListener("click", () => populateForLobe(lobeObject));
         }
         btn.addEventListener("mouseover", () => (navHoverText.innerHTML = btn.name));
+        btn.addEventListener("mouseout", () => (navHoverText.innerHTML = ""));
     });
 };
 
