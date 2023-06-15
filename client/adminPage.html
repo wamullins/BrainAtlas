@@ -14,26 +14,34 @@
 </head>
 <body>
     <header>
-        <div></div>
+        <div id="adminUsername"></div>
         <div id="homeBtn"><a href="index.html">Home</a></div>
     </header>
-    <div id="adminLoginBox" class="hidden">
+    <div id="adminLoginBox">
         <div id="adminLoginText">Admin Login</div>
         <input id="usernameBox" type="text" placeholder="USERNAME"/>
         <input id="passwordBox" type="password" placeholder="PASSWORD"/>
         <button id="loginButton"> Login </button>
     </div>
-    <div id="adminReviewArea">
+    <div id="adminReviewArea" class="hidden">
+        <div id="adminTitle">Sort Articles By:</div>
         <div id="adminPanel">
-            <div>Sort Articles By:</div>
-            <input type="radio" id="brains" name="articleSelector" value='majorBrainRegion'/>
-            <label for="adminMBRButton">Major Brain Region</label>
-            <input type="radio" id="lobes" name="articleSelector" value='lobe'/>
-            <label for="adminLobeButton">Lobe</label>
-            <input type="radio" id="structures" name="articleSelector" value='structureROI'/>
-            <label for="adminStructureButton">Structure</label>
-            <input type="radio" id="adminUnapprovedButton" name="articleSelector" value='unapproved'/>
-            <label for="adminUnapprovedButton">Unapproved</label>
+            <div>
+                <input type="radio" id="brains" name="articleSelector" value='majorBrainRegion'/>
+                <label for="adminMBRButton">Major Brain Region</label>
+            </div>
+            <div>
+                <input type="radio" id="lobes" name="articleSelector" value='lobe'/>
+                <label for="adminLobeButton">Lobe</label>
+            </div>
+            <div>
+                <input type="radio" id="structures" name="articleSelector" value='structureROI'/>
+                <label for="adminStructureButton">Structure</label>
+            </div>
+            <div>
+                <input type="radio" id="adminUnapprovedButton" name="articleSelector" value='unapproved'/>
+                <label for="adminUnapprovedButton">Unapproved</label>
+            </div>
         </div>
         <div id="regionPrompts"></div>
         <div id="adminWorkArea">

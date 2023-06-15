@@ -3,7 +3,8 @@ const adminLoginBox = document.getElementById("adminLoginBox");
 const usernameBox = document.getElementById("usernameBox");
 const passwordBox = document.getElementById("passwordBox");
 const loginBtn = document.getElementById("loginButton");
-const adminArticleReview = document.getElementById("adminArticleReview");
+const adminUsername = document.getElementById("adminUsername");
+const adminReviewArea = document.getElementById("adminReviewArea");
 const radios = document.querySelectorAll('input[name="articleSelector"]');
 const regionPrompts = document.getElementById("regionPrompts");
 const adminInsepctor = document.getElementById("adminInspector");
@@ -49,8 +50,8 @@ class Article {
         return `<div id="${this._id}" class="adminArticleBox">${this.citation}</div>`;
     }
     informationBoxFill() {
-        return `Title: <span id="articleTitleText">${this.title}</span><br><br>Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
-        Citation: <span id="citationText">${this.citataion}</span><br><br>Url: <a id="descriptionSource" href="${this.url}">${this.url}</a>`;
+        return `<div id="infoWrapper"> Title: <span id="articleTitleText">${this.title}</span><br><br>Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
+        Citation: <span id="citationText">${this.citation}</span><br><br>Url: <a id="descriptionSource" href="${this.url}">${this.url}</a></div>`;
     }
 }
 
@@ -68,7 +69,7 @@ const loginAdmin = () => {
 
     let admin = adminAccounts.find((admin) => admin.username === usernameBox.value);
     if (!admin) {
-        console.log("Username Not Found");
+        alert("Username Not Found");
         return;
     }
     if (admin.password === passwordBox.value) {
@@ -76,9 +77,10 @@ const loginAdmin = () => {
 
         // make the login box hidden while bringing up the review box
         adminLoginBox.setAttribute("class", "hidden");
-        adminArticleReview.classList = [];
+        adminReviewArea.classList = [];
+        adminUsername.innerHTML = admin.username;
     } else {
-        console.log("Incorrect Password");
+        alert("Incorrect Password");
     }
 };
 

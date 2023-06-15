@@ -21,7 +21,7 @@ header {
     justify-content: space-around;
 }
 
-/* Information Page specific code */
+/*///////////////////////// Information Page specific code /////////////////////////*/
 
 #majorBrainRegionTitle, #lobeTitle {
     font-size: 6vmin;
@@ -35,26 +35,22 @@ header {
     margin: 1vmin;
     display: flex;
     justify-content: center;
-    gap: 3vmin;
     width: 100vw;
 }
 
 #navagationBrainBox {
     height: 60vmin;
     width: 70vmin;
-    min-width: 600px;
-    border-right: 2px solid black;
-    border-left:2px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-left: 2px solid black;
 }
 
 #navHoverText {
-    align-self: flex-start;
-    margin: 2vmin;
     height: 3vmin;
+    margin: 2vmin;
 }
 
 #navagationBrain {
@@ -77,7 +73,117 @@ header {
     transform: translate(-50%,-50%);
 }
 
-/* STRUCTURE SPECIFIC CODE... THIS IS GOING TO BE GROSS */
+#informationBoxWrapper {
+    height: 60vmin;
+    width: 70vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+#informationBox {
+    height: 58vmin;
+    width: 65vmin;
+    overflow-y: scroll;
+    font-weight: bold;
+}
+
+#informationBox > img {
+    height: 50vmin;
+    width: 50vmin;
+}
+
+#informationBox > span, #informationBox > a {
+    font-weight: 400;
+} 
+
+#articleTitleText {
+    font-size: 3vmin;
+}
+
+#relatedArticlesBox {
+    width: 61vw;
+    height: 20vh;
+    margin-top: 1vmin;
+    display: grid;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    grid-template-columns: repeat(2, 30vw );
+    justify-items: center;
+    gap: 1vw;
+    overflow-y: scroll;
+}
+
+#relatedArticlesBox > div {
+    width: 28vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+#relatedArticlesBox> div:hover {
+    filter: brightness(80%);
+}
+
+#initialSubmitArticleButton {
+    display: flex;
+    gap: 2vmin;
+    align-items: center;
+}
+
+/* ///////////////////////// Submit Article Popup Specific Code /////////////////////////*/
+#submitArticleBox {
+    height: 60vmin;
+    width: 80vmin;
+    background-color: rgb(208, 205, 243);
+    border: 2vmin solid rgb(208, 205, 243);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    animation-name: submitArticlePopUp;
+    animation-duration: 0.5s;
+}
+
+#submitArticleTitle {
+    font-size: 4vmin;
+}
+
+#submitArticleBox > label {
+    align-self: flex-start;
+}
+#submitArticleBox > input {
+    width: 60vmin;
+}   
+
+#submitArticleBox > button {
+    width: 20vmin;
+}
+
+#abstractInput {
+    width: 60vmin;
+}
+
+#thankYou {
+    align-self: center;
+}
+
+@keyframes submitArticlePopUp {
+    0% {transform: translate(-50%,30%)}
+    60% {transform: translate(-50%,-60%)}
+    100% {transform: translate(-50%,-50%)}
+}
+
+/*///////////////////////// STRUCTURE SPECIFIC CODE... THIS IS GOING TO BE GROSS /////////////////////////*/
 
 /* forebrain */
 #forebrainMainNav {
@@ -230,71 +336,7 @@ header {
     left: 60.5%;
 }
 
-/* back to code relevant to the rest of the page */
-
-#informationBox {
-    height: 60vmin;
-    width: 30vw;
-    overflow-y: scroll;
-    font-weight: bold;
-    border-right: 2px solid black;
-}
-
-#informationBox > img {
-    height: 25vw;
-    width: 25vw;
-}
-
-#informationBox > span, #informationBox > a {
-    font-weight: 400;
-}
-
-#relatedArticlesBox {
-    width: 61vw;
-    height: 20vh;
-    margin-top: 1vmin;
-    display: grid;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    grid-template-columns: repeat(2, 30vw );
-    justify-items: center;
-    gap: 1vw;
-    overflow-y: scroll;
-}
-
-#relatedArticlesBox > div {
-    width: 28vw;
-    height: 4vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: lightgray;
-}
-
-#initialSubmitArticleButton {
-    display: flex;
-    gap: 2vmin;
-    align-items: center;
-}
-
-#submitArticleBox {
-    height: 60vh;
-    width: 50vw;
-    background-color: lightgray;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#thankYou {
-    align-self: center;
-}
-
-/* Homepage specific code  */
+/*///////////////////////// Homepage specific code  /////////////////////////*/
 
 #atlasDiv {
     height: 70vh;
@@ -336,7 +378,7 @@ header {
     filter: brightness(80%);
 }
 
-/* Major Brain specific code */
+/*///////////////////////// Major Brain specific code /////////////////////////*/
 
 #majorBrainRegionDiv {
     display: flex;
@@ -358,7 +400,7 @@ header {
     font-size: 10vmin;
 }
 
-/* Admin portal specific code */
+/*///////////////////////// Admin portal specific code /////////////////////////*/
 #adminLoginBox {
     height: 50vh;
     width: 50vw;
@@ -372,46 +414,111 @@ header {
     margin-top: .5vmin;
 }
 
+#adminTitle {
+    font-size: 4vmin;
+}
+
 #adminReviewArea {
     height: 90vh;
     width: 90vw;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #adminPanel {
     height: 5vmin;
-    background-color: white;
+    width: 70vmin;
     display: flex;
+    justify-content: space-around;
     align-items: center;
 }
 
+#adminPanel > *{
+    font-size: 2.5vmin;
+}
+
+#findButton {
+    width: 8vmin;
+}
+
 #regionPrompts {
-    height: 5vmin;
-    background-color: white;
+    height: 3vmin;
 }
 
 #adminWorkArea {
-    height: 80vh;
+    height: 75vh;
     width: 90vw;
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
 #adminInspector {
-    height: 70vh;
-    width: 60vw;
+    height: 70vmin;
+    width: 110vmin;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#infoWrapper {
+    font-weight: bold;
+    width: 100vmin;
+    height: 60vmin;
+    background-color: rgb(232, 255, 231);
+    border: 2vmin solid rgb(232, 255, 231)
+}
+
+#infoWrapper > span {
+    font-weight: normal;
+    overflow-y: scroll;
 }
 
 #adminObjectList {
-    height: 70vh;
-    width: 25vw;
+    height: 70vmin;
+    width: 50vmin;
     border: 1px solid black;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#adminObjectList > div {
+    width: 40vmin;
+    height: 6vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    margin-top: 2vmin;
+}
+
+#adminObjectList > div:hover {
+    filter: brightness(80%);
+}
+
+#adminControls {
+    display: flex;
+    justify-content: space-around;
+    width: 50vmin;
+    height: 4vmin;
+}
+
+#adminApproval{
+    color: green;
+    background-color: rgb(235, 244, 246);
+    height: 4vmin;
+    width: 16vmin;
+}
+
+#adminDelete{
+    color: darkred;
+    background-color: rgb(235, 244, 246);
+    height: 4vmin;
+    width: 16vmin;
 }
 
 /* ////////////////////////// */

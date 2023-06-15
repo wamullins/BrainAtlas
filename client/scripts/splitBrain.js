@@ -78,7 +78,7 @@ class Article {
     informationBoxFill() {
         return `Title: <span id="articleTitleText">${this.title}</span><br><br>
         Abstract: <span id="descriptionText">${this.abstract}</span><br><br>
-        Citation: <span id="citationText">${this.citataion}</span><br><br>
+        Citation: <span id="citationText">${this.citation}</span><br><br>
         Url: <a id="descriptionSource" href="${this.url}">${this.url}</a>`;
     }
 }
@@ -302,5 +302,3 @@ const createNewArticle = async () => {
 };
 
 init();
-
-//// depending on how long the above takes -> begin working on styling (if the above takes a while) and scrap lobe functionality or complete the lobes if it doesn't take forever. lobe page will be almost identicle to the splt brain page though so maybe it's not worth cutting
