@@ -138,6 +138,17 @@ const pageSetup = async (mbrObject) => {
             <img id="cerebellumNav" name="Cerebellum" class="navButton" src="imgs/midbrainPiece.png"/>
             <img id="medullaOblongataNav" name="Medulla Oblongata" class="navButton" src="imgs/midbrainPiece.png"/>`;
     }
+
+    const navHoverText = document.getElementById("navHoverText");
+    //set up session storage for the lobe page setup
+    const lobeLinks = document.querySelectorAll("#navagationBrain > a");
+    lobeLinks.forEach(function (lobe) {
+        lobe.addEventListener("click", () => {
+            sessionStorage.setItem("lobe", lobe.name);
+        });
+        lobe.addEventListener("mouseover", () => (navHoverText.innerHTML = lobe.name));
+    });
+
     // get all the structure objects connected to the mbr
     const reponse = await axios.get(`http://localhost:3001/api/structures/majorBrainRegion/${mbrObject._id}`);
     const structures = reponse.data;
@@ -151,6 +162,7 @@ const pageSetup = async (mbrObject) => {
         } else {
             btn.addEventListener("click", () => populateForMajorBrainRegion(mbrObject));
         }
+        btn.addEventListener("mouseover", () => (navHoverText.innerHTML = btn.name));
     });
 };
 
@@ -290,7 +302,5 @@ const createNewArticle = async () => {
 };
 
 init();
-
-//// GOALS FOR jun 14 -> get the admin article review finished. Get admin ability to update and delete articles finished
 
 //// depending on how long the above takes -> begin working on styling (if the above takes a while) and scrap lobe functionality or complete the lobes if it doesn't take forever. lobe page will be almost identicle to the splt brain page though so maybe it's not worth cutting
