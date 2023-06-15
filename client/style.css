@@ -44,6 +44,14 @@ header {
     position: relative;
 }
 
+#navagationBrain>img:hover {
+    filter: brightness(80%);
+}
+#navagationBrain>a:hover {
+    filter: brightness(80%);
+}
+
+
 #informationBox {
     height: 50vh;
     width: 30vw;

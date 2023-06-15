@@ -247,15 +247,6 @@ const createStructureROIs = async (majorBrainRegions, lobes) => {
             majorBrainRegionId: majorBrainRegionMap.get("Midbrain"),
             lobeId: null,
         }),
-        new StructureROI({
-            name: "Cerebral Penduncles",
-            description: "these are the cerebral penduncles",
-            descriptionCitation: "https://www.wikipedia.org/",
-            highlightImageFile:
-                "https://www.brainlab.org/wp-content/uploads/2015/06/BrainlabOrg_Illustrations_BDR_21APR15_Page_14.png",
-            majorBrainRegionId: majorBrainRegionMap.get("Midbrain"),
-            lobeId: null,
-        }),
         /// hindbrain structures
         new StructureROI({
             name: "Pons",

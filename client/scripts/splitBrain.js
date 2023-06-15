@@ -112,31 +112,30 @@ const pageSetup = async (mbrObject) => {
     if (mbrObject.name === "Forebrain") {
         /// unsure about the lobes and how I'll need to name id, and whatnot in order to properly format the css for it
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-        <img id="forebrainMainNav" name="Forebrain" class="navButton" src="imgs/midbrain_potato.png"/>
-        <a id="frontalLobeLink" name="Frontal Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
-        <a id="parietalLobeLink" name="Parietal Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
-        <a id="temporalLobeLink" name="Temporal Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
-        <a id="occipitalLobeLink" name="Occipital Lobe" href="lobePage.html"><img src="imgs/midbrainPiece.png"/></a>
-        <img id="thalamusNav" name="Thalamus" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="hypothalamusNav" name="Hypothalamus" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="amygdalaNav" name="Amygdala" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="hippocampusNav" name="Hippocampus" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="pituitaryGlandNav" name="Pituitary Gland" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="corpusCollosumNav" name="Corpus Collosum" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="casalGangliaNav" name="Basal Ganglia" class="navButton" src="imgs/midbrainPiece.png"/>`;
+        <img id="forebrainMainNav" name="Forebrain" class="navButton" src="imgs/ForebrainBaseModel.png"/>
+        <a id="frontalLobeLink" name="Frontal Lobe" href="lobePage.html"><img src="imgs/FrontalModel.png"/></a>
+        <a id="parietalLobeLink" name="Parietal Lobe" href="lobePage.html"><img src="imgs/ParietalModel.png"/></a>
+        <a id="temporalLobeLink" name="Temporal Lobe" href="lobePage.html"><img src="imgs/TemporalModel.png"/></a>
+        <a id="occipitalLobeLink" name="Occipital Lobe" href="lobePage.html"><img src="imgs/OccipitalModel.png"/></a>
+        <img id="thalamusNav" name="Thalamus" class="navButton" src="imgs/ThalamusModel.png"/>
+        <img id="hypothalamusNav" name="Hypothalamus" class="navButton" src="imgs/HypothalamusModel.png"/>
+        <img id="amygdalaNav" name="Amygdala" class="navButton" src="imgs/AmygdalaModel.png"/>
+        <img id="hippocampusNav" name="Hippocampus" class="navButton" src="imgs/HippocampusModel.png"/>
+        <img id="pituitaryGlandNav" name="Pituitary Gland" class="navButton" src="imgs/PituitaryGlandModel.png"/>
+        <img id="corpusCollosumNav" name="Corpus Collosum" class="navButton" src="imgs/CorpusModel.png"/>
+        <img id="basalGangliaNav" name="Basal Ganglia" class="navButton" src="imgs/BasalModel.png"/>`;
     } else if (mbrObject.name === "Midbrain") {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-            <img id="midbrainMainNav" name="Midbrain" class="navButton" src="imgs/midbrain_potato.png"/>
-            <img id="colliculiNav" name="Colliculi" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="tectumNav" name="Tectum" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="tegmentumNav" name="Tegmentum" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="cerebrealPendunclesNav" name="Cerebral Penduncles" class="navButton" src="imgs/midbrainPiece.png"/>`;
+            <img id="midbrainMainNav" name="Midbrain" class="navButton" src="imgs/MidbrainBaseModel.png"/>
+            <img id="colliculiNav" name="Colliculi" class="navButton" src="imgs/ColliculiModel.png"/>
+            <img id="tectumNav" name="Tectum" class="navButton" src="imgs/TectumModel.png"/>
+            <img id="tegmentumNav" name="Tegmentum" class="navButton" src="imgs/TegmentumModel.png"/>`;
     } else if (mbrObject.name === "Hindbrain") {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-            <img id="hindbrainMainNav" name="Hindbrain" class="navButton" src="imgs/midbrain_potato.png"/>
-            <img id="ponsNav" name="Pons" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="cerebellumNav" name="Cerebellum" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="medullaOblongataNav" name="Medulla Oblongata" class="navButton" src="imgs/midbrainPiece.png"/>`;
+            <img id="hindbrainMainNav" name="Hindbrain" class="navButton" src="imgs/HindbrainBaseModel.png"/>
+            <img id="ponsNav" name="Pons" class="navButton" src="imgs/PonsModel.png"/>
+            <img id="cerebellumNav" name="Cerebellum" class="navButton" src="imgs/CerebellumModel.png"/>
+            <img id="medullaOblongataNav" name="Medulla Oblongata" class="navButton" src="imgs/MedullaModel.png"/>`;
     }
 
     const navHoverText = document.getElementById("navHoverText");

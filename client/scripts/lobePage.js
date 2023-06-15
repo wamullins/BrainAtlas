@@ -113,24 +113,24 @@ const pageSetup = async (lobeObject) => {
     if (lobeObject.name === "Frontal Lobe") {
         /// unsure about the lobes and how I'll need to name id, and whatnot in order to properly format the css for it
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-        <img id="frontalLobenMainNav" name="Frontal Lobe" class="navButton" src="imgs/midbrain_potato.png"/>
-        <img id="prefrontalNav" name="Prefrontal cortex" class="navButton" src="imgs/midbrainPiece.png"/>
-        <img id="broccaNav" name="Brocca's Area" class="navButton" src="imgs/midbrainPiece.png"/>`;
+        <img id="frontalLobenMainNav" name="Frontal Lobe" class="navButton" src="imgs/FrontalLobeBaseModel.png"/>
+        <img id="prefrontalNav" name="Prefrontal cortex" class="navButton" src="imgs/PFCModel.png"/>
+        <img id="broccaNav" name="Brocca's Area" class="navButton" src="imgs/BroccasModel.png"/>`;
     } else if (lobeObject.name === "Parietal Lobe") {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-            <img id="parietalNav" name="Parietal Lobe" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="somatNav" name="Somatosensory cortex" class="navButton" src="imgs/midbrain_potato.png"/>
-            <img id="angularNav" name="Angular Gyrus" class="navButton" src="imgs/midbrainPiece.png"/>`;
+            <img id="parietalNav" name="Parietal Lobe" class="navButton" src="imgs/ParietalLobeBaseModel.png"/>
+            <img id="somatNav" name="Somatosensory cortex" class="navButton" src="imgs/SomatModel.png"/>
+            <img id="angularNav" name="Angular Gyrus" class="navButton" src="imgs/AngularGyrusModel.png"/>`;
     } else if (lobeObject.name === "Temporal Lobe") {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-            <img id="temporalNav" name="Temporal Lobe" class="navButton" src="imgs/midbrain_potato.png"/>
-            <img id="superiorTempNav" name="Superior Temporal Gyrus" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="tempPoleNav" name="Temporal Pole" class="navButton" src="imgs/midbrainPiece.png"/>`;
+            <img id="temporalNav" name="Temporal Lobe" class="navButton" src="imgs/TemporalLobeBaseModel.png"/>
+            <img id="superiorTempNav" name="Superior Temporal Gyrus" class="navButton" src="imgs/SuperiorGyrusModel.png"/>
+            <img id="tempPoleNav" name="Temporal Pole" class="navButton" src="imgs/TemporalPoleModel.png"/>`;
     } else if (lobeObject.name === "Occipital Lobe") {
         navigationBrain.innerHTML = `<div id="navHoverText"></div>
-            <img id="occipitalNav" name="Occipital Lobe" class="navButton" src="imgs/midbrain_potato.png"/>
-            <img id="vOneNav" name="Primary Visual Cortex" class="navButton" src="imgs/midbrainPiece.png"/>
-            <img id="vTwoNav" name="Secondary Visual Cortex" class="navButton" src="imgs/midbrainPiece.png"/>`;
+            <img id="occipitalNav" name="Occipital Lobe" class="navButton" src="imgs/OccipitalLobeBaseModel.png"/>
+            <img id="vOneNav" name="Primary Visual Cortex" class="navButton" src="imgs/vOneModel.png"/>
+            <img id="vTwoNav" name="Secondary Visual Cortex" class="navButton" src="imgs/vTwoModel.png"/>`;
     }
 
     console.log(`going for structures`);
