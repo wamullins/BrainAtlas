@@ -7,19 +7,19 @@ Brain Atlas allows the user to search through the various structures in our brai
 ## Images
 
 Home:
-![HomeScreen](readme_imgs/HomeScreen.png)
+![HomeScreen](/readme_Imgs/HomeScreen.png)
 
 Forebrain page:
-![ForbrainPage](readme_imgs/ForebrainPage.png)
+![ForbrainPage](/readme_Imgs/ForebrainPage.png)
 
 Midbrain page showing article information:
-![MidbrainPage](readme_imgs/MidbrainPageShowingArticle.png)
+![MidbrainPage](/readme_Imgs/MidbrainPageShowingArticle.png)
 
 User submission popup:
-![UserSubmitWindow](readme_imgs/UserSubmitWindow.png)
+![UserSubmitWindow](/readme_Imgs/UserSubmitWindow.png)
 
 Admin article control page:
-![AdminControlPage](readme_imgs/AdminControlPage.png)
+![AdminControlPage](/readme_Imgs/AdminControlPage.png)
 
 ## Technologies Used
 
