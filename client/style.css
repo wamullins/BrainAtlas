@@ -49,13 +49,13 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     border-left: 2px solid black;
 }
 
 #navHoverText {
-    height: 3vmin;
+    height: 10vmin;
     margin: 2vmin;
+    font-size: 3vmin;
 }
 
 #navagationBrain {
@@ -126,13 +126,15 @@ h1 {
     height: 4vw;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: lightgray;
+    border-top: .5vmin solid lightgray;
+    border-bottom: .5vmin solid lightgray;
 }
 
 .articleBox {
     font-size: 1.5vmin;
     text-align: center;
+    overflow-y: hidden;
 }
 
 #relatedArticlesBox> div:hover {
@@ -468,7 +470,8 @@ h1 {
     width: 100vmin;
     height: 60vmin;
     background-color: rgb(232, 255, 231);
-    border: 2vmin solid rgb(232, 255, 231)
+    border: 2vmin solid rgb(232, 255, 231);
+    overflow-x: scroll;
 }
 
 #infoWrapper > span {
@@ -487,13 +490,14 @@ h1 {
 }
 
 #adminObjectList > div {
-    width: 40vmin;
-    height: 6vmin;
+    width: 38vmin;
+    height: 10vmin;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: lightgray;
+    border: 1vmin solid lightgray;
     margin-top: 2vmin;
+    overflow-y: hidden;
 }
 
 #adminObjectList > div:hover {
