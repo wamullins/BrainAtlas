@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    font-family: 'Iceland',sans-serif;
 }
 
 header {
@@ -13,6 +14,10 @@ header {
     justify-content: space-between;
     align-items: center;
     font-size: 2.5vmin;
+}
+
+h1 {
+    font-size: 10vmin;
 }
 
 #homeAdminBtns {
@@ -344,39 +349,29 @@ header {
 /*///////////////////////// Homepage specific code  /////////////////////////*/
 
 #atlasDiv {
-    height: 70vh;
-    width: 70vw;
+    height: 50vmin;
+    width: 100vmin;;
     position: relative;
-    background-color: #f5dea1;
 }
 
 #mainBrain {
-    height: 40vmin;
-    width: 40vmin;
     position: absolute;
     top: 40%;
     left: 50%;
-    margin-top: -20vmin;
-    margin-left: -20vmin;
-
+    transform: translate(-50%, -50%);
 }
 
 #atlas {
     position: absolute;
-    width: 30vmin;
-    height: 30vmin;
-    top: 75%;
-    left: 50%;
-    margin-top: -10vmin;
-    margin-left: -15vmin;
+    top: 76%;
+    left: 56%;
+    transform: translate(-50%, -50%);
 }
 
 #exploreMsg {
     position: absolute;
-    width: 40vmin;
-    height: 20vmin;
-    top: 75%;
-    left: 55%;
+    top: 70%;
+    left: 65%;
 }
 
 #mainBrain:hover{

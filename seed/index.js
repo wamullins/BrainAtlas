@@ -375,7 +375,7 @@ const createArticles = async (majorBrainRegions, lobes, structureROIs) => {
             majorBrainRegionId: majorBrainRegionMap.get("Midbrain"),
             lobeId: null,
             structureROIId: null,
-            approved: false,
+            approved: true,
         }),
         new Article({
             title: "Midbrain dopamine and prefrontal function in humans: interaction and modulation by COMT genotype",
@@ -397,7 +397,7 @@ const createArticles = async (majorBrainRegions, lobes, structureROIs) => {
             majorBrainRegionId: null,
             lobeId: null,
             structureROIId: structureROIMap.get("Colliculi"),
-            approved: true,
+            approved: false,
         }),
     ];
     await Article.insertMany(articles);
