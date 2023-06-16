@@ -125,6 +125,11 @@ header {
     background-color: lightgray;
 }
 
+.articleBox {
+    font-size: 1.5vmin;
+    text-align: center;
+}
+
 #relatedArticlesBox> div:hover {
     filter: brightness(80%);
 }
